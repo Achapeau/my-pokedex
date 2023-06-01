@@ -30,28 +30,19 @@ const pokemonList = [
 
 function App() {
   
-  const after = document.querySelector('.after');
-  const before = document.querySelector('.before');
-  const [pokemonIndex, setIterator] = useState(0);
+  // const after = document.querySelector('.after');
+  // const before = document.querySelector('.before');
+  const [pokemonIndex, setPokemonIndex] = useState(0);
+  const pokemon = pokemonList[pokemonIndex]
+
   const handleClickBefore = () => {
-    if (pokemonIndex > 1) {
-      setIterator(pokemonIndex - 1);
-      after.style.display = 'unset';      
-    } if  (pokemonIndex === 1){
-      setIterator(pokemonIndex - 1);
-      before.style.display = 'none'
+      setPokemonIndex(pokemonIndex - 1);
     }
-  };
+  
   const handleClickAfter = () => {
-    if (pokemonIndex < pokemonList.length - 1) {
-      setIterator(pokemonIndex + 1);
-      before.style.display = 'unset'
-    } if (pokemonIndex === pokemonList.length - 2) {
-      setIterator(pokemonIndex + 1);
-      after.style.display = 'none';
+      setPokemonIndex(pokemonIndex + 1);
     }
-  };
-  const pokemon = pokemonList[pokemonIndex];
+  
 
 
 
@@ -59,8 +50,8 @@ function App() {
     <>
       <div>
         <PokemonCard imgSrc={pokemon.imgSrc} name={pokemon.name}/>
-        <button className="before" onClick={handleClickBefore}>Before</button>
-        <button className="after" onClick={handleClickAfter}>After</button>
+        {pokemonIndex > 0 && <button onClick={handleClickBefore}>Before</button>}
+        {pokemonIndex < pokemonList.length - 1 && <button onClick={handleClickAfter}>After</button>}
       </div>
     </>
   );
