@@ -1,16 +1,16 @@
 import PropTypes from "prop-types"
-const PokemonCard = (props) => {
-    console.log (props)
+const PokemonCard = ({imgSrc, name}) => {
+   
     
-    return ((props.imgSrc)?
+    return ((imgSrc)?
             <figure>
-                <img src={props.imgSrc} alt={props.name} />
-                <figcaption> {props.name} </figcaption>
+                <img src={imgSrc} alt={name} />
+                <figcaption> {name} </figcaption>
             </figure>
     :    
             <figure>
                 <p>???</p>
-                <figcaption> {props.name} </figcaption>
+                <figcaption> {name} </figcaption>
             </figure>
     )
 }
