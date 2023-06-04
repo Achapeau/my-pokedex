@@ -1,16 +1,14 @@
 import PropTypes from "prop-types"
-const PokemonCard = ({imgSrc, name}) => {
+const PokemonCard = ({pokemon}) => {
+  if (pokemon.name === "pikachu") {
+    alert("Pika pikachu!!!")
+  }
    
     
-    return ((imgSrc)?
+    return (
             <figure>
-                <img src={imgSrc} alt={name} />
-                <figcaption> {name} </figcaption>
-            </figure>
-    :    
-            <figure>
-                <p>???</p>
-                <figcaption> {name} </figcaption>
+                {pokemon.imgSrc? <img src={pokemon.imgSrc} alt={pokemon.name} /> :<p>???</p>}
+                <figcaption> {pokemon.name} </figcaption>
             </figure>
     )
 }

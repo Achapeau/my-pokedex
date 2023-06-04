@@ -1,20 +1,20 @@
-const NavBar = ({pokemonIndex, length, setPokemonIndex}) => {
+const NavBar = ({setPokemonIndex, pokemonIndex, pokemonList}) => {
     
-    const handleClickBefore = () => {
-        setPokemonIndex(pokemonIndex - 1);
+      
+    const style = {
+        margin: '0.5em',
     }
     
-    const handleClickAfter = () => {
-        setPokemonIndex(pokemonIndex + 1);
-    }
     return (
     <>
-        {pokemonIndex > 0 && <button onClick={handleClickBefore}>Before</button>}
-        {pokemonIndex < length - 1 && <button onClick={handleClickAfter}>After</button>}
+        {pokemonList.map((item, i) => (
+            <button 
+                style={style} key={item.name} 
+            onClick={() => {setPokemonIndex((pokemonIndex=i))}}>
+            {item.name}</button>
+            ))}
     </>
     )
-}
-    
-    
-    export default NavBar
+} 
+export default NavBar
 
